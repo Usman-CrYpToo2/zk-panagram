@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Noir build output (regenerate with `nargo compile`)
+target/
+
+# Foundry build output
+paragramVerifier/cache/
+paragramVerifier/out/
+
+# Secrets
+.env
+.env.*

@@ -1,0 +1,6 @@
+[submodule "paragramVerifier/lib/forge-std"]
+	path = paragramVerifier/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "paragramVerifier/lib/openzeppelin-contracts"]
+	path = paragramVerifier/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
