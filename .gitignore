@@ -5,8 +5,8 @@
 target/
 
 # Foundry build output
-paragramVerifier/cache/
-paragramVerifier/out/
+contracts/cache/
+contracts/out/
 
 # Secrets
 .env

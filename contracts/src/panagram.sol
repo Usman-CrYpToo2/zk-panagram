@@ -116,7 +116,3 @@ contract Panagram is ERC1155, Ownable {
         return string.concat(BASE_URI, Strings.toString(id), ".json");
     }
 }
-
-
-// 3. The answer hash is unsalted and fully public. roundAnswerHash is a public mapping and startNewRound's calldata is visible. Anyone can dictionary-attack keccak256(word) offline and win without solving anything. The ZK part correctly hides the word from calldata, but the hash on-chain gives the answer away to anyone willing to grind a wordlist. A salted commitment would close this.
-

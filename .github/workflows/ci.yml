@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  circuit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nargo
+        run: |
+          curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | bash
+          echo "$HOME/.nargo/bin" >> "$GITHUB_PATH"
+
+      - name: Select Nargo version
+        run: noirup -v 1.0.0-beta.21
+
+      - name: Fetch dependencies
+        run: nargo check
+
+      - name: Circuit tests
+        # ethkey's CLI manages the oracle server the tests depend on
+        run: bash ~/nargo/github.com/Usman-CrYpToo2/ethkey-noir/v0.2.0/tools/ethkey.sh test
+
+  contracts:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: contracts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Build
+        run: forge build
+
+      - name: Test
+        run: forge test -vvv
