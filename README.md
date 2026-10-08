@@ -4,9 +4,6 @@
 
 A word-guessing game in which players prove they know the answer with a zero-knowledge proof, without revealing it. The first valid prover in each round receives a winner NFT; later provers receive a runner-up NFT. The circuit is written in Noir and verified on-chain by a Barretenberg Honk verifier.
 
-> [!WARNING]
-> Educational code. Unaudited and not intended for deployment. See [Security](#security).
-
 ## How It Works
 
 1. The owner starts a round with `keccak256(abi.encodePacked(word))`.
@@ -108,6 +105,10 @@ The suite verifies the proof in `out/` end to end: public inputs match the contr
 ## Security
 
 A self-review found 5 issues, all acknowledged. The most significant is that the public answer hash can be searched offline; [`docs/answer-secrecy.md`](docs/answer-secrecy.md) evaluates commit-reveal and signed-voucher designs that address it. See [`audits/2026-10-self-review.md`](audits/2026-10-self-review.md).
+
+## Safety
+
+Not audited by a third party. Provided as is, without warranty.
 
 ## License
 
